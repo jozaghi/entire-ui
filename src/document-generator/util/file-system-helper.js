@@ -6,7 +6,7 @@ const getFileList= (path,filters=[])=>
     new Promise((resolve,reject)=>{
         recursiveReader(path,filters,(err,files)=>{
             if(err){
-                reject(err);
+                return reject(err);
             }
             resolve(files);
         });
@@ -17,9 +17,9 @@ const readAllText= path=>
     new Promise((resolve,reject)=>{
         fs.readFile(path,fileEncoding,(err,content)=>{
             if(err){
-                reject(err);
+                return reject(err);
             }
-            resolve(content);
+            resolve({path,content});
         });
     });
 
@@ -34,10 +34,20 @@ const readAllFiles=(path,filters=[])=>
         .catch(reject);
     });
 
+const saveAllText=(path,text)=>new Promise((resolve,reject)=>{
+    fs.writeFile(path,text,err=>{
+        if(err){
+            return reject(err);
+        } 
+        resolve();
+    });
+});
+
 module.exports = {
     getFileList,
     readAllText,
-    readAllFiles
+    readAllFiles,
+    saveAllText
 };
 
 

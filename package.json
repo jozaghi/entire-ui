@@ -12,7 +12,8 @@
     "recursive-readdir": "^2.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "generateDocument":"node ./src/document-generator/generator.js -- --watch",
+    "start": "react-scripts start && npm run generateDocument",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
