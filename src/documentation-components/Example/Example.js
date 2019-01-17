@@ -1,5 +1,6 @@
 import React from "react";
 import CodeExample from "./CodeExample";
+import Props from "./Props";
 
 const renderProps=props=>{
     let rows=[];
@@ -60,7 +61,7 @@ const Example = props=>{
         <div>
             {renderExamples(config.examples)}
         </div>
-        {renderProps(config.props)}
+        <Props props={config.props}/>
     </div>);
 }
 
