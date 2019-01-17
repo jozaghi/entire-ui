@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-class Test extends React.Component {
+/**
+   * asdasdas as asd asd asd asd sasdas 
+   */
+class SimpleText extends React.Component {
     render(){
-        return(<h1>ok</h1>);
+        return(<h1>ok2<input type="text"/></h1>);
     }
 }
 
 
-Test.propTypes = {
+SimpleText.propTypes = {
   /**
    * Description of prop "foo".
    */
@@ -25,8 +28,8 @@ Test.propTypes = {
   ]),
 };
 
-Test.defaultProps = {
+SimpleText.defaultProps = {
   foo: 42,
   bar: 21
 };
-export default Test;
+export default SimpleText;

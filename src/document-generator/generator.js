@@ -1,6 +1,6 @@
 const path = require("path");
 const {file,parser}=require("./util");
-
+const chokidar = require('chokidar');
 
 const componentsPath=path.resolve(__dirname, "../component");
 const examplesPath=path.resolve(__dirname, "../example");
@@ -8,15 +8,21 @@ const documentationConfigPath=path.resolve(__dirname, "../doc-config.js");
 const log=console.log;
 
 const getExamples= (examples,componentName)=>{
+    
     return examples
-    .filter(examplefile=>examplefile.path.startsWith(path.join(examplesPath,componentName)))
+    .filter(examplefile=>{
+        let cleanExampleFilePath=examplefile.path.replace(/\/\//g, '/');
+        let cleanExampleDirPath=path.join(examplesPath,componentName).replace(/\/\//g, '/');
+        return cleanExampleFilePath.startsWith(cleanExampleDirPath);
+    })
     .map(examplefile=>{
         try{
             let parsedComponent= parser.parse(examplefile.content);
             return{
                 name:parsedComponent.displayName,
                 description:parsedComponent.description,
-                code:examplefile.content
+                code:examplefile.content,
+                exampleFor:componentName
             };   
         }catch(err){
             log(err);
@@ -50,12 +56,21 @@ const generateAndSaveDocumentation= async ()=>
         await file.saveAllText(documentationConfigPath,jsonDoc);
     };
 
+const run=()=>{
+    log("start generating documents...")
+    generateAndSaveDocumentation()
+    .then(r=>log("documents generated!!!"))
+    .catch(log);
+}
 
+if(process.argv.includes("--watch")){
+    chokidar.watch([componentsPath,examplesPath]).on("change",()=>{
+        log("new changes has been detected");
+        run();
+    });
+}
+run();
 
-
-generateAndSaveDocumentation()
-.then(r=>log("done!!!"))
-.catch(log);
 
 
 

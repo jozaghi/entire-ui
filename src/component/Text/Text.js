@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from 'prop-types';
-
-class Test extends React.Component {
+/**
+   * this is basic documentation for this component 
+   */
+class Text extends React.Component {
     render(){
-        return(<h1>ok</h1>);
+        return(<h1>ok1</h1>);
     }
 }
 
 
-Test.propTypes = {
+
+Text.propTypes = {
   /**
    * Description of prop "foo".
    */
@@ -25,8 +28,8 @@ Test.propTypes = {
   ]),
 };
 
-Test.defaultProps = {
+Text.defaultProps = {
   foo: 42,
   bar: 21
 };
-export default Test;
+export default Text;
