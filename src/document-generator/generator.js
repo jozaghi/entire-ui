@@ -3,7 +3,7 @@ const {file,parser}=require("./util");
 const chokidar = require('chokidar');
 
 const componentsPath=path.resolve(__dirname, "../component");
-const examplesPath=path.resolve(__dirname, "../example");
+const examplesPath=path.resolve(__dirname, "../examples");
 const documentationConfigPath=path.resolve(__dirname, "../doc-config.js");
 const log=console.log;
 

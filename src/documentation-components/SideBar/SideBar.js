@@ -8,8 +8,10 @@ const renderLinks=config=>
 
 const SideBar = (props)=>{
 
-    return (<section>
+    return (
+        <section className="section__sidebar">
         {renderLinks(props.config)}
-    </section>);
+        </section>
+    );
 }
 export default SideBar;

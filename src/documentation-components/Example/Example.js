@@ -40,7 +40,7 @@ const renderProps=props=>{
 
 const renderExamples= examples=>{
     return examples.map((item,i)=>{
-        const ExampleComponent =  require(`../../example/${item.exampleFor}/${item.name}`).default;
+        const ExampleComponent =  require(`../../examples/${item.exampleFor}/${item.name}`).default;
         return (<div key={i} >
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>

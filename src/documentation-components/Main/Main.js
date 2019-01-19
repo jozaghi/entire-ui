@@ -14,9 +14,11 @@ const Main = (props)=>{
     let pathName=props.location.pathname.replace("/","");
     let docConfig=getDocConfig(props.config,pathName);
     
-    return(<section>
+    return(
+        <section className="section__main">
         { docConfig && docConfig.length>0 && <Example config={docConfig[0]}/> }  
-    </section>);
+        </section>
+    );
 }
 
 export default withRouter(props=><Main {...props}/>);
