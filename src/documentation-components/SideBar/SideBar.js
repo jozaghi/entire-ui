@@ -1,17 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const renderLinks=config=>
-    config.map((item,i)=>(<div key={i}>
-        <Link to={item.name}>{item.name}</Link>
-    </div>));
+import { withRouter } from "react-router-dom";
+
+const getActieveClass= (name,current)=> name.toLowerCase()===current.toLowerCase()?"sidenav__item--active":"";
+
+
+const renderLinks=(config,current)=>
+    config.map((item,i)=>(
+        <div className={`sidenav__item ${getActieveClass(item.name,current)} `} key={i}>
+            <Link to={item.name}>{item.name}</Link>
+        </div>
+    ));
 
 
 const SideBar = (props)=>{
-
+    let pathName=props.location.pathname.replace("/","");
     return (
-        <section className="section__sidebar">
-        {renderLinks(props.config)}
-        </section>
+        <aside className="section__sidebar">
+           <nav className="sidenav">
+            {renderLinks(props.config,pathName)}
+           </nav> 
+        </aside>
     );
 }
-export default SideBar;
+export default withRouter(props=><SideBar {...props}/>);

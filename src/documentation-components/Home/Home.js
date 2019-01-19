@@ -6,13 +6,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 class Home extends React.Component{
     render(){
-        let c=JSON.stringify(config);
-        return(<Router>
-            <div>
-                <SideBar config={config}/>
-                <Main config={config} />
-            </div>
-        </Router>);
+        return(
+            <Router>
+                <div>
+                    <SideBar config={config}/>
+                    <Main config={config} />
+                </div>
+            </Router>
+        );
     }
 }
 

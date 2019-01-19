@@ -218,7 +218,7 @@ module.exports = function(webpackEnv) {
         // This is only used in production mode
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
-            parser: safePostCssParser,
+            //parser: safePostCssParser,
             map: shouldUseSourceMap
               ? {
                   // `inline: false` forces the sourcemap to be output into a
