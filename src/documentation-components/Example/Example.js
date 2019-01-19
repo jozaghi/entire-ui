@@ -38,31 +38,68 @@ const renderProps=props=>{
      
 }
 
+class CodeBox extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            displayCode:false
+        };
+        this.handleTaggleCodeButton=this.handleTaggleCodeButton.bind(this);
+    }
+    handleTaggleCodeButton(){
+        this.setState({
+            displayCode:!this.state.displayCode
+        });
+    }
+
+    render(){
+        return(
+            <div className="codebox">
+                <button className="codebox__button" onClick={this.handleTaggleCodeButton} >{this.state.displayCode?"hide":"show"} code</button>
+                <div className={`codebox__code ${this.state.displayCode?"codebox__code--show":""}`} >
+                    <CodeExample>
+                        {this.props.code}
+                    </CodeExample>
+                </div>
+            </div>
+        );
+    }
+}
+
+
 const renderExamples= examples=>{
     return examples.map((item,i)=>{
         const ExampleComponent =  require(`../../examples/${item.exampleFor}/${item.name}`).default;
         return (<div key={i} >
-                <h3>{item.name}</h3>
+                <h4>{item.name}</h4>
                 <p>{item.description}</p>
-                <ExampleComponent/>
-                <CodeExample>
-                    {item.code}
-                </CodeExample>
-                <h1>{item.path}</h1>
+                <div className="document__example-component" >
+                    <ExampleComponent/>
+                </div>
+                <CodeBox code={item.code}/>
+                
             </div>);
     });
 }
 
 const Example = props=>{
     let { config } = props;
-    return (<div>
-        <h1>{config.name}</h1>
-        <p>{config.description}</p>
-        <div>
-            {renderExamples(config.examples)}
+    return (
+        <div className="document">
+            <section className="document__header">
+                <h1>{config.name}</h1>
+            </section> 
+            <section className="document__body">
+                <p>{config.description}</p>
+                {config.examples.length>0 &&
+                    <div className="document__example-box" >
+                        {renderExamples(config.examples)}
+                    </div>
+                }
+                <Props props={config.props}/>
+            </section>
         </div>
-        <Props props={config.props}/>
-    </div>);
+    );
 }
 
 export default Example; 

@@ -1,0 +1,50 @@
+.table{
+    border-spacing: 0;
+    margin-top: 20px;
+    border-bottom:1px solid $ui-03;
+    width: 100%;
+    thead{
+        background-color: $ui-02;
+    }
+
+    tbody{
+        background-color: $ui-01;
+        tr:nth-child(even){
+            background-color: $ui-02;
+        }
+    }
+
+    tr:hover td{
+        background-color: $hover-row;
+        border-top:1px solid $brand-01;
+        border-bottom:1px solid $brand-01;
+        &:first-child{
+            border-left:1px solid $brand-01;
+
+        }
+        &:last-child{
+        border-right:1px solid $brand-01;
+            
+        }
+    }
+    td, th{
+        text-align: left;
+        padding: 1rem;
+        border:1px solid transparent;
+        border-top:1px solid $ui-03;
+        //border-bottom:1px solid $ui-04;
+        &:first-child{
+            border-left:1px solid $ui-03;
+
+        }
+        &:last-child{
+        border-right:1px solid $ui-03;
+            
+        }
+    }
+   /* th th:first-of-type th:last-of-type{
+        border-top:1px solid $ui-04;
+        border-right:1px solid $ui-04;
+        border-left:1px solid $ui-04;
+    }*/
+}

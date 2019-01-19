@@ -15,21 +15,15 @@ const Props = props=>{
 
     if(rows.length==0)return;
 
-    return(<table>
+    return(
+        <table className="table">
             <thead>
                 <tr>
-                    <td>
-                        Name
-                    </td>
-                    <td>
-                        Description
-                    </td>
-                    <td>
-                        Required
-                    </td>
-                    <td>
-                        Default Value
-                    </td>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Default Value</th>
                 </tr>
             </thead>
             <tbody>

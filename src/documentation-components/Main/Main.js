@@ -15,9 +15,9 @@ const Main = (props)=>{
     let docConfig=getDocConfig(props.config,pathName);
     
     return(
-        <section className="section__main">
+        <main className="main">
         { docConfig && docConfig.length>0 && <Example config={docConfig[0]}/> }  
-        </section>
+        </main>
     );
 }
 

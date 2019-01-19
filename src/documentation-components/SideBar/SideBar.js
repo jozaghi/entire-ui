@@ -16,7 +16,7 @@ const renderLinks=(config,current)=>
 const SideBar = (props)=>{
     let pathName=props.location.pathname.replace("/","");
     return (
-        <aside className="section__sidebar">
+        <aside className="sidebar">
            <nav className="sidenav">
             {renderLinks(props.config,pathName)}
            </nav> 

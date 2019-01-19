@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript';
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/vs2015.css';
 
 class CodeExample extends React.Component {
   componentDidMount() {
