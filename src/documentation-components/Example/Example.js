@@ -46,6 +46,9 @@ class CodeBox extends React.Component{
         };
         this.handleTaggleCodeButton=this.handleTaggleCodeButton.bind(this);
     }
+    componentWillReceiveProps(){
+        this.setState({displayCode:false});
+    }
     handleTaggleCodeButton(){
         this.setState({
             displayCode:!this.state.displayCode
@@ -56,10 +59,12 @@ class CodeBox extends React.Component{
         return(
             <div className="codebox">
                 <button className="codebox__button" onClick={this.handleTaggleCodeButton} >{this.state.displayCode?"hide":"show"} code</button>
-                <div className={`codebox__code ${this.state.displayCode?"codebox__code--show":""}`} >
-                    <CodeExample>
-                        {this.props.code}
-                    </CodeExample>
+                <div className={`codebox__code`} >
+                    {this.state.displayCode &&
+                        <CodeExample>
+                            {this.props.code}
+                        </CodeExample>
+                    }
                 </div>
             </div>
         );
@@ -76,8 +81,7 @@ const renderExamples= examples=>{
                 <div className="document__example-component" >
                     <ExampleComponent/>
                 </div>
-                <CodeBox code={item.code}/>
-                
+                <CodeBox code={item.code} key={i}/>
             </div>);
     });
 }
@@ -93,6 +97,9 @@ const Example = props=>{
                 <p>{config.description}</p>
                 {config.examples.length>0 &&
                     <div className="document__example-box" >
+                        <div className="util-margin-bottom-large">
+                            <h3>{`Example${config.examples.length>1?'s':''}:`}</h3>
+                        </div>
                         {renderExamples(config.examples)}
                     </div>
                 }

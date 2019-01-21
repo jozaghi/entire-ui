@@ -34,7 +34,7 @@
         border:1px solid $hover-row;
     }
     &__example-component{
-        margin: 3rem 0 3rem 0; 
+        margin: 3rem 1rem 3rem 1rem; 
     }
     
 }
@@ -54,9 +54,6 @@
         }
     }
     &__code{
-        display:  none;
-        &--show{
-            display: block;
-        }
+     
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from "./documentation-components/Home"
 import * as serviceWorker from './serviceWorker';
-
+//import '../node_modules/highlight.js/styles/vs2015.css';
 import "./style/sass/main.scss";
 
 
