@@ -8,12 +8,12 @@ const Props = props=>{
             <td>{key}</td>
             <td>{_props[key].description}</td>
             <td>{_props[key].type.name}</td>
-            <td>{_props[key].required}</td>
+            <td>{_props[key].required && <span>&#10004;</span>}</td>
             <td>{_props[key].defaultValue?_props[key].defaultValue.value:""}</td>
         </tr>);
     });
 
-    if(rows.length==0)return;
+    if(rows.length===0)return;
 
     return(
         <table className="table">

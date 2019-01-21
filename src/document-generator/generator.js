@@ -2,7 +2,7 @@ const path = require("path");
 const {file,parser}=require("./util");
 const chokidar = require('chokidar');
 
-const componentsPath=path.resolve(__dirname, "../component");
+const componentsPath=path.resolve(__dirname, "../components");
 const examplesPath=path.resolve(__dirname, "../examples");
 const documentationConfigPath=path.resolve(__dirname, "../doc-config.js");
 const log=console.log;
@@ -49,8 +49,8 @@ const mapContentToDocuments= (componentfiles,examples)=>{
 
 const generateAndSaveDocumentation= async ()=>
     {
-        let files= await file.readAllFiles(componentsPath);
-        let examples= await file.readAllFiles(examplesPath);
+        let files= await file.readAllFiles(componentsPath,["*.spec.js","index.js"]);
+        let examples= await file.readAllFiles(examplesPath,["*.spec.js","index.js"]);
         let docs=mapContentToDocuments(files,examples);
         let jsonDoc= `module.exports=${docs.length>0?JSON.stringify(docs):'[]'}`;
         await file.saveAllText(documentationConfigPath,jsonDoc);

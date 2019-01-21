@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 
 
-const getDocConfig=(configs,key)=>configs.filter(item=>item.name.toLowerCase()==key.toLowerCase());
+const getDocConfig=(configs,key)=>configs.filter(item=>item.name.toLowerCase()===key.toLowerCase());
 
 
 

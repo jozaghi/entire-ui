@@ -2,41 +2,7 @@ import React from "react";
 import CodeExample from "./CodeExample";
 import Props from "./Props";
 
-const renderProps=props=>{
-    let rows=[];
-    Object.keys(props).forEach(key=>{
-        rows.push(<tr key={key}>
-            <td>{key}</td>
-            <td>{props[key].description}</td>
-            <td>{props[key].type.name}</td>
-            <td>{props[key].required}</td>
-            <td>{props[key].defaultValue?props[key].defaultValue.value:""}</td>
-        </tr>);
-    });
 
-    return(<table>
-            <thead>
-                <tr>
-                    <td>
-                        Name
-                    </td>
-                    <td>
-                        Description
-                    </td>
-                    <td>
-                        Required
-                    </td>
-                    <td>
-                        Default Value
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                {rows}
-            </tbody>
-        </table>);
-     
-}
 
 class CodeBox extends React.Component{
     constructor(props){
@@ -75,14 +41,19 @@ class CodeBox extends React.Component{
 const renderExamples= examples=>{
     return examples.map((item,i)=>{
         const ExampleComponent =  require(`../../examples/${item.exampleFor}/${item.name}`).default;
-        return (<div key={i} >
+        return (
+            <React.Fragment>
+            { i>0 && <div key={i} className="divider"></div>}
+            <div key={i} >
                 <h4>{item.name}</h4>
                 <p>{item.description}</p>
                 <div className="document__example-component" >
                     <ExampleComponent/>
                 </div>
                 <CodeBox code={item.code} key={i}/>
-            </div>);
+            </div>
+            </React.Fragment>
+            );
     });
 }
 
