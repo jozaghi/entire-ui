@@ -1,11 +1,13 @@
 .divider{
-    background-color:  $ui-03;
+    background-color:$hover-row;
     height: 1px;
     width: 100%;
-    margin: 2rem 0;
-    opacity: .6;
+    margin: 1rem 0;
 }
 
+.util-margin-top-large{
+    margin-top: 3.2rem;
+}
 .util-margin-bottom-large{
     margin-bottom: 3.2rem;
 }

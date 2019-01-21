@@ -45,7 +45,7 @@ const renderExamples= examples=>{
             <React.Fragment>
             { i>0 && <div key={i} className="divider"></div>}
             <div key={i} >
-                <h4>{item.name}</h4>
+                <h5>{item.name}</h5>
                 <p>{item.description}</p>
                 <div className="document__example-component" >
                     <ExampleComponent/>
@@ -65,15 +65,24 @@ const Example = props=>{
                 <h1>{config.name}</h1>
             </section> 
             <section className="document__body">
-                <p>{config.description}</p>
+                <div className="util-margin-bottom-large">
+                    <h3>Description:</h3>
+                    <p>{config.description}</p>
+                </div>
+                
                 {config.examples.length>0 &&
-                    <div className="document__example-box" >
+                    <div>
                         <div className="util-margin-bottom-large">
                             <h3>{`Example${config.examples.length>1?'s':''}:`}</h3>
                         </div>
-                        {renderExamples(config.examples)}
+                        <div className="document__example-box" >
+                            {renderExamples(config.examples)}
+                        </div>
                     </div>
                 }
+                <div className="util-margin-top-large" >
+                    <h3>Props</h3>
+                </div>
                 <Props props={config.props}/>
             </section>
         </div>

@@ -30,11 +30,13 @@
         }
     }
     &__example-box{
-        padding: 2rem;
-        border:1px solid $hover-row;
+        background-color: whitesmoke;
+        padding: 1rem;
     }
     &__example-component{
-        margin: 3rem 1rem 3rem 1rem; 
+        margin: 2rem 1rem 2rem 1rem; 
+        background-color: white;
+        padding: 2rem;
     }
     
 }
