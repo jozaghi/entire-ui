@@ -1,0 +1,35 @@
+.text-box{
+    width: 100%;
+    box-shadow: 0 1px 0 0 $ui-05;
+    background-color: $field-01;
+    border:none;
+    border-bottom: 1px solid transparent;
+    height: 4rem;
+    outline: none;
+    padding:0 1.6rem;
+    color: $text-01;
+    transition: all .4s;
+    font-size: 1.4rem;
+
+    
+    &--multiline{
+        height: 8rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    &::-webkit-input-placeholder{
+        color: $text-03;
+        font-weight: 400;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+    }
+    &:focus:not(&--error) , &:active:not(&--error) {
+        border-bottom: 1px solid $hover-primary;
+    }
+    &--error{
+        border-bottom: 1px solid $support-01;
+        box-shadow: 0 1px 0 0 $support-01;
+    }
+}
